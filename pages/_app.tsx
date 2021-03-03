@@ -1,12 +1,8 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
+import { theme } from '../common/theme';
 import '../styles/global.css';
 
 const App = ({ Component, pageProps }) => {
-  const theme = createMuiTheme({
-    palette: {
-      type: 'dark',
-    },
-  });
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
