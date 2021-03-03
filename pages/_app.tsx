@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core';
 import { theme } from '../common/theme';
 import '../styles/global.css';
 import { Provider } from 'react-redux';

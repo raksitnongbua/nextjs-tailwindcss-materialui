@@ -1,7 +1,7 @@
 import { CssBaseline, PaletteType, ThemeProvider } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { theme, themeByType } from '../common/theme';
+import { themeByType } from '../common/theme';
 import { IRootState } from '../store';
 type ReduxType = ReturnType<typeof mapStateToProps>;
 const LayoutContainer: React.FC<ReduxType> = ({ children, themeType }) => {

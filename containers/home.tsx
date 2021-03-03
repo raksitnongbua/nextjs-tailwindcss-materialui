@@ -14,7 +14,7 @@ import { IRootState } from '../store';
 import { ChangeEvent } from 'react';
 type ReduxType = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatcherToProps>;
-const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
+const HomeContainer: React.FC<ReduxType> = ({ setTheme }) => {
   const handleToggleDarkMode = (
     _e: ChangeEvent<HTMLInputElement>,
     value: boolean
@@ -33,7 +33,7 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
           />
         </div>
         <Typography variant='h4' color='primary'>
-          Login {theme}
+          Login
         </Typography>
         <Box my={1} py={2}>
           <TextField
