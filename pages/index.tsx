@@ -1,13 +1,17 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import { Container } from '@material-ui/core';
+import React from 'react';
 
 const Home = () => {
-  return <div>This is Home Screen</div>;
+  return (
+    <div>
+      <Container maxWidth='lg'>This is Home Screen</Container>
+    </div>
+  );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   return {
     props: {},
   };
-}
+};
 export default Home;
