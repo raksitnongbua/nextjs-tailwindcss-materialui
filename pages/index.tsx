@@ -1,14 +1,8 @@
-import { Container, Typography } from '@material-ui/core';
 import React from 'react';
+import HomeContainer from '../containers/home';
 
 const Home = () => {
-  return (
-    <div className='p-4'>
-      <Container maxWidth='lg'>
-        <Typography> This is Home Screen</Typography>
-      </Container>
-    </div>
-  );
+  return <HomeContainer />;
 };
 
 export const getStaticProps = async () => {
