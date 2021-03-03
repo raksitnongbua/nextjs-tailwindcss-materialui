@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Container,
+  Switch,
   TextField,
   Typography,
 } from '@material-ui/core';
@@ -11,6 +12,13 @@ const Home = () => {
   return (
     <div className='p-4 flex flex-center'>
       <Container maxWidth='lg'>
+        <div className='flex flex-row-reverse'>
+          <Switch
+            color='primary'
+            name='checkedB'
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </div>
         <Typography variant='h4' color='primary'>
           Login
         </Typography>
@@ -22,7 +30,7 @@ const Home = () => {
             size='small'
           />
           <div className='my-2'>
-            <Button variant='outlined' color='primary'>
+            <Button variant='contained' color='primary'>
               submit
             </Button>
           </div>
