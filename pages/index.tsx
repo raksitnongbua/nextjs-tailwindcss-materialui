@@ -3,7 +3,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div>
+    <div className='p-4'>
       <Container maxWidth='lg'>
         <Typography> This is Home Screen</Typography>
       </Container>
