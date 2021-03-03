@@ -1,7 +1,7 @@
 import { IThemeState } from './types';
 import { Constants } from './constants';
 const init: IThemeState = {
-  theme: 'light',
+  theme: 'dark',
 };
 export const themeReducer = (
   state: IThemeState = init,

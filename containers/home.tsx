@@ -14,7 +14,7 @@ import { IRootState } from '../store';
 import { ChangeEvent } from 'react';
 type ReduxType = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatcherToProps>;
-const HomeContainer: React.FC<ReduxType> = ({ setTheme }) => {
+const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
   const handleToggleDarkMode = (
     _e: ChangeEvent<HTMLInputElement>,
     value: boolean
@@ -28,6 +28,7 @@ const HomeContainer: React.FC<ReduxType> = ({ setTheme }) => {
           <Switch
             color='primary'
             name='darkModeChecked'
+            checked={theme === 'dark'}
             onChange={handleToggleDarkMode}
             inputProps={{ 'aria-label': 'primary checkbox' }}
           />
@@ -47,6 +48,9 @@ const HomeContainer: React.FC<ReduxType> = ({ setTheme }) => {
               submit
             </Button>
           </div>
+          <p className='text-xl text-red-400 dark:text-white'>
+            This is tailwind style
+          </p>
         </Box>
       </Container>
     </div>
