@@ -1,25 +1,25 @@
-import {
-  Box,
-  Button,
-  Container,
-  Switch,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Container, Switch, Typography } from '@material-ui/core';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../store/theme/actions';
 import { ThemeActions } from '../store/theme/types';
 import { IRootState } from '../store';
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
+import LoginForm from '../components/loginForm';
+import BuyForm from '../components/buyForm';
+
 type ReduxType = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatcherToProps>;
+
 const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
   const handleToggleDarkMode = (
     _e: ChangeEvent<HTMLInputElement>,
     value: boolean
   ) => {
     setTheme(value ? 'dark' : 'light');
+  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
   };
   return (
     <div className='p-4 flex'>
@@ -33,29 +33,12 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
             inputProps={{ 'aria-label': 'primary checkbox' }}
           />
         </div>
-        <Typography variant='h4' className='login-title'>
-          Login
+        <Typography variant='h4' className='login-title text-focus-in'>
+          เข้าสู่ระบบ
         </Typography>
-        <Box my={1} py={2}>
-          <TextField
-            placeholder='EMAIL ADDRESS'
-            type='email'
-            variant='outlined'
-            size='small'
-            color='primary'
-          />
-          <div className='my-2'>
-            <Button variant='contained' color='primary'>
-              submit
-            </Button>
-            <Button variant='contained' className='text-white bg-black'>
-              test
-            </Button>
-          </div>
-          <p className='text-xl text-red-400 dark:text-white'>
-            This is tailwind style
-          </p>
-        </Box>
+        <LoginForm onSubmit={handleSubmit} />
+        <BuyForm />
+        {/* <div className='loading' /> */}
       </Container>
     </div>
   );
