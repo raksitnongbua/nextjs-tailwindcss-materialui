@@ -10,3 +10,32 @@
 
 @tailwind components;
 @tailwind utilities;
+
+.login-title {
+  color: theme('colors.primary');
+}
+
+.text-primary {
+  color: theme('colors.primary');
+}
+.loading {
+  background: rgb(101, 101, 101);
+  background: linear-gradient(
+    107deg,
+    rgba(101, 101, 101, 1) 0%,
+    rgba(74, 74, 74, 1) 100%
+  );
+  width: 100px;
+  height: 20px;
+  @apply rounded;
+  animation: fade-in 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes fade-in {
+  0% 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
