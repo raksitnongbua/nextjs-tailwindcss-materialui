@@ -1,13 +1,12 @@
-import { createMuiTheme, PaletteType } from '@material-ui/core';
-let type: PaletteType = 'light';
+import { createMuiTheme, PaletteMode } from '@material-ui/core';
 
-export const themeByType = (type: PaletteType) => {
+export const themeByType = (mode: PaletteMode) => {
   return createMuiTheme({
     palette: {
       primary: {
         main: '#00d666',
       },
-      type,
+      mode,
     },
   });
 };

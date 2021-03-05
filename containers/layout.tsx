@@ -1,11 +1,11 @@
-import { CssBaseline, PaletteType, ThemeProvider } from '@material-ui/core';
+import { CssBaseline, PaletteMode, ThemeProvider } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { themeByType } from '../common/theme';
 import { IRootState } from '../store';
 type ReduxType = ReturnType<typeof mapStateToProps>;
 const LayoutContainer: React.FC<ReduxType> = ({ children, themeType }) => {
-  const theme = themeByType(themeType as PaletteType);
+  const theme = themeByType(themeType as PaletteMode);
   useEffect(() => {
     if (themeType === 'dark') {
       document.documentElement.classList.add('dark');

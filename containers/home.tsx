@@ -33,7 +33,7 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
             inputProps={{ 'aria-label': 'primary checkbox' }}
           />
         </div>
-        <Typography variant='h4' color='primary'>
+        <Typography variant='h4' className='login-title'>
           Login
         </Typography>
         <Box my={1} py={2}>
@@ -42,10 +42,14 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
             type='email'
             variant='outlined'
             size='small'
+            color='primary'
           />
           <div className='my-2'>
             <Button variant='contained' color='primary'>
               submit
+            </Button>
+            <Button variant='contained' className='text-white bg-black'>
+              test
             </Button>
           </div>
           <p className='text-xl text-red-400 dark:text-white'>
