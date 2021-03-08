@@ -6,7 +6,7 @@ import { ThemeActions } from '../store/theme/types';
 import { IRootState } from '../store';
 import React, { ChangeEvent } from 'react';
 import LoginForm, { IState } from '../components/loginForm';
-import BuyForm from '../components/buyForm';
+import CoinForm from '../components/coinForm';
 
 type ReduxType = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatcherToProps>;
@@ -37,7 +37,11 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
           เข้าสู่ระบบ
         </Typography>
         <LoginForm onSubmit={handleSubmit} />
-        <BuyForm />
+        <div className='flex'>
+          <CoinForm alias='THB' action='buy' balance={1000000} price={0} />
+          <CoinForm alias='BTC' action='sell' balance={0.5} price={1500000} />
+        </div>
+
         {/* <div className='loading' /> */}
       </Container>
     </div>
