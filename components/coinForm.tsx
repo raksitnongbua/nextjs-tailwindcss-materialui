@@ -1,6 +1,7 @@
 import {
   Button,
   InputAdornment,
+  Mark,
   Skeleton,
   Slider,
   TextField,
@@ -50,8 +51,15 @@ const CoinForm: React.FC<IProps> = ({
   const handleBuyClick = () => {
     if (onBuy) onBuy(+spend);
   };
+  const marks: Mark[] = [
+    { value: 0, label: '0%' },
+    { value: 25, label: '25%' },
+    { value: 50, label: '50%' },
+    { value: 75, label: '75%' },
+    { value: 100, label: '100%' },
+  ];
   return (
-    <div className='m-2'>
+    <div className='m-4'>
       <div className='w-72 flex justify-between'>
         <Typography>
           {AVAILABLE_BALANCE_STR} {alias}
@@ -94,29 +102,34 @@ const CoinForm: React.FC<IProps> = ({
           max={100}
           valueLabelDisplay='auto'
           valueLabelFormat={(x) => `${x}%`}
-          className='w-72'
+          className='w-64 self-center'
           value={spendPercent}
           onChange={handleSpendPercentChange}
           color={action === 'buy' ? 'primary' : 'secondary'}
+          marks={marks}
         />
-        {action === 'buy' ? (
-          <Button
-            variant='contained'
-            onClick={handleBuyClick}
-            className='text-black dark:text-white'
-          >
-            {BUY_STR}
-          </Button>
-        ) : (
-          <Button
-            variant='contained'
-            color='secondary'
-            onClick={handleBuyClick}
-            className='text-black dark:text-white'
-          >
-            {SELL_STR}
-          </Button>
-        )}
+        <div className='my-2 w-full'>
+          {action === 'buy' ? (
+            <Button
+              variant='contained'
+              onClick={handleBuyClick}
+              className='text-black dark:text-white'
+              fullWidth
+            >
+              {BUY_STR}
+            </Button>
+          ) : (
+            <Button
+              variant='contained'
+              color='secondary'
+              onClick={handleBuyClick}
+              className='text-black dark:text-white'
+              fullWidth
+            >
+              {SELL_STR}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
