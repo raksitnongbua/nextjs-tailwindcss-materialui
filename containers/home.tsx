@@ -5,7 +5,7 @@ import * as actions from '../store/theme/actions';
 import { ThemeActions } from '../store/theme/types';
 import { IRootState } from '../store';
 import React, { ChangeEvent } from 'react';
-import LoginForm from '../components/loginForm';
+import LoginForm, { IState } from '../components/loginForm';
 import BuyForm from '../components/buyForm';
 
 type ReduxType = ReturnType<typeof mapStateToProps> &
@@ -18,8 +18,8 @@ const HomeContainer: React.FC<ReduxType> = ({ theme, setTheme }) => {
   ) => {
     setTheme(value ? 'dark' : 'light');
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = (data: IState) => {
+    console.log('try logging in : ', data);
   };
   return (
     <div className='p-4 flex'>

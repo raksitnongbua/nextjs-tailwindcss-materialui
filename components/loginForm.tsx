@@ -1,12 +1,36 @@
 import { Box, Button, TextField } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 interface IProps {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: (data: IState) => void;
 }
+export interface IState {
+  email: string;
+  password: string;
+}
+const initialState: IState = {
+  email: '',
+  password: '',
+};
 const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
+  const router = useRouter();
+  const [data, setData] = useState<IState>(initialState);
+  const handleResetPassword = () => {
+    router.push('/reset-password');
+  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit(data);
+  };
+  const handleTextFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    event.persist();
+    setData((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
   return (
-    <Box className='my-1 py-2 w-72' my={1} py={2} width={280}>
-      <form onSubmit={onSubmit}>
+    <Box className='my-1 py-2 w-72'>
+      <form onSubmit={handleSubmit} onReset={handleResetPassword}>
         <div className='flex flex-col'>
           <TextField
             placeholder='EMAIL ADDRESS'
@@ -16,6 +40,8 @@ const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
             color='primary'
             className='my-1'
             required
+            onChange={handleTextFieldChange}
+            name='email'
           />
           <TextField
             placeholder='PASSWORD'
@@ -25,6 +51,8 @@ const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
             color='primary'
             className='my-1'
             required
+            onChange={handleTextFieldChange}
+            name='password'
           />
         </div>
         <div className='my-2 flex justify-end'>
@@ -36,7 +64,7 @@ const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
           >
             ยืนยัน
           </Button>
-          <Button variant='outlined' className='ml-2'>
+          <Button variant='outlined' className='ml-2' type='reset'>
             ลืมรหัสผ่าน
           </Button>
         </div>
