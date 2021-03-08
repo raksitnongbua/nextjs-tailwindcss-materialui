@@ -12,6 +12,7 @@ import * as actions from '../store/theme/actions';
 import { IRootState } from '../store';
 import { ThemeActions } from '../store/theme/types';
 import { Dispatch } from 'redux';
+import Header from '../components/header';
 
 type ReduxType = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatcherToProps>;
@@ -29,28 +30,18 @@ const LayoutContainer: React.FC<ReduxType> = ({
       document.documentElement.classList.remove('dark');
     }
   }, [themeType]);
-  const handleToggleDarkMode = (
-    _e: React.ChangeEvent<HTMLInputElement>,
-    value: boolean
-  ) => {
+  const handleToggleDarkMode = (value: boolean) => {
     setTheme(value ? 'dark' : 'light');
   };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Header
+        theme={themeType as PaletteMode}
+        onModeChange={handleToggleDarkMode}
+      />
       <Container maxWidth='md'>
-        <div className='p-2'>
-          <div className='flex flex-row-reverse'>
-            <Switch
-              color='primary'
-              name='darkModeChecked'
-              checked={themeType === 'dark'}
-              onChange={handleToggleDarkMode}
-              inputProps={{ 'aria-label': 'primary checkbox' }}
-            />
-          </div>
-          {children}
-        </div>
+        <div className='p-2'>{children}</div>
       </Container>
     </ThemeProvider>
   );
