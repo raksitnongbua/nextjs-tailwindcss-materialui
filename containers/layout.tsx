@@ -2,7 +2,6 @@ import {
   Container,
   CssBaseline,
   PaletteMode,
-  Switch,
   ThemeProvider,
 } from '@material-ui/core';
 import React, { useEffect } from 'react';
